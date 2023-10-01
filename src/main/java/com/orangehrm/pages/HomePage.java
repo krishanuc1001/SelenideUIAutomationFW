@@ -1,5 +1,7 @@
 package com.orangehrm.pages;
 
+import com.orangehrm.enums.LeftPaneMenuItems;
+
 import static com.codeborne.selenide.Selenide.title;
 
 public class HomePage {
@@ -14,9 +16,13 @@ public class HomePage {
         return leftPane;
     }
 
+    public EmployeeInfoPage navigateToEmployeeInfoPage() {
+        getLeftPane().selectMenuItemFromLeftPane(LeftPaneMenuItems.PIM);
+        return EmployeeInfoPage.getInstance();
+    }
+
     public String getHomePageTitle() {
         return title();
     }
-
 
 }

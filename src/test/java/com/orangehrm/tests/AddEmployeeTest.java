@@ -1,26 +1,27 @@
 package com.orangehrm.tests;
 
-import com.orangehrm.pages.EmployeeInfoPage;
 import com.orangehrm.pages.LoginPage;
 import com.orangehrm.pojos.EmployeeDetails;
+import com.orangehrm.pojos.LoginDetails;
 import com.orangehrm.testdata.EmployeeTestData;
+import com.orangehrm.testdata.LoginTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class AddEmployeeTest {
+class AddEmployeeTest extends TestSetup {
 
-    EmployeeDetails employee = EmployeeTestData.getDynamicEmployeeDetails();
+    private final EmployeeDetails employeeDetails = EmployeeTestData.getDynamicEmployeeDetails();
+    private final LoginDetails loginDetails = LoginTestData.getValidLoginCredentials();
 
     @Test
     void validateAdditionOfEmployee() {
-        LoginPage.getInstance()
-                .userLogin()
-                .getLeftPane()
-                .selectMenuItemFromLeftPane("PIM");
 
-        Assertions.assertTrue(EmployeeInfoPage.getInstance()
-                .addNewEmployee(employee)
-                .isEmployeeAdded(), "<<=========== EMPLOYEE NOT ADDED SUCCESSFULLY ===========>>");
+        Assertions.assertTrue(LoginPage.getInstance()
+                .userLogin(loginDetails)
+                .navigateToEmployeeInfoPage()
+                .addNewEmployee(employeeDetails)
+                .isEmployeeAdded());
+
     }
 
 }
