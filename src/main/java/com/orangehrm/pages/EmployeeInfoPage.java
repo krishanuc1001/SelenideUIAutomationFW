@@ -23,7 +23,7 @@ public class EmployeeInfoPage {
         return new EmployeeInfoPage();
     }
 
-    private static final SelenideElement ADD_EMPLOYEE_BTN = $(byTagAndText("a", "Add EmployeeDetails"));
+    private static final SelenideElement ADD_EMPLOYEE_BTN = $(byTagAndText("a", "Add Employee"));
     private static final SelenideElement FIRST_NAME = $(byName("firstName"));
     private static final SelenideElement LAST_NAME = $(byName("lastName"));
     private static final SelenideElement UPLOAD_PHOTO = $(byXpath("//input[@type='file']"));
@@ -34,7 +34,7 @@ public class EmployeeInfoPage {
         ADD_EMPLOYEE_BTN.shouldBe(visible).click();
         FIRST_NAME.shouldBe(visible).setValue(employee.getFirstName());
         LAST_NAME.shouldBe(visible).setValue(employee.getLastName());
-        UPLOAD_PHOTO.shouldBe(enabled).uploadFromClasspath("images/myimage.jpeg");
+        UPLOAD_PHOTO.shouldBe(enabled).uploadFromClasspath(employee.getMyImagePath());
         SAVE_BTN.shouldBe(enabled).click();
         return this;
     }
