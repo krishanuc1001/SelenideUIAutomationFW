@@ -2,6 +2,7 @@ package com.orangehrm.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.google.common.util.concurrent.Uninterruptibles;
+import com.orangehrm.pojos.Employee;
 
 import java.time.Duration;
 
@@ -22,10 +23,10 @@ public class EmployeeInfoPage {
     private static final SelenideElement SAVE_BTN = $(byText("Save"));
     private static final SelenideElement SUCCESS_MESSAGE = $(byText("Success"));
 
-    public EmployeeInfoPage addNewEmployee() {
+    public EmployeeInfoPage addNewEmployee(Employee employee) {
         ADD_EMPLOYEE_BTN.shouldBe(visible).click();
-        FIRST_NAME.shouldBe(visible).setValue("Krishanu");
-        LAST_NAME.shouldBe(visible).setValue("Chakraborty");
+        FIRST_NAME.shouldBe(visible).setValue(employee.getFirstName());
+        LAST_NAME.shouldBe(visible).setValue(employee.getLastName());
         UPLOAD_PHOTO.shouldBe(enabled).uploadFromClasspath("myimage.jpeg");
         SAVE_BTN.shouldBe(enabled).click();
         return this;
