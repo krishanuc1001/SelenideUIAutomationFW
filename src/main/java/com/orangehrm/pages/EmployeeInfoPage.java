@@ -19,7 +19,11 @@ import static com.codeborne.selenide.Selenide.$;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class EmployeeInfoPage {
 
-    private static final SelenideElement ADD_EMPLOYEE_BTN = $(byTagAndText("a", "Add Employee"));
+    public static EmployeeInfoPage getInstance() {
+        return new EmployeeInfoPage();
+    }
+
+    private static final SelenideElement ADD_EMPLOYEE_BTN = $(byTagAndText("a", "Add EmployeeDetails"));
     private static final SelenideElement FIRST_NAME = $(byName("firstName"));
     private static final SelenideElement LAST_NAME = $(byName("lastName"));
     private static final SelenideElement UPLOAD_PHOTO = $(byXpath("//input[@type='file']"));
