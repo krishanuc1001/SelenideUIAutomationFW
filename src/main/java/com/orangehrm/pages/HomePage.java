@@ -1,6 +1,6 @@
 package com.orangehrm.pages;
 
-import com.orangehrm.enums.LeftPaneMenuItems;
+import com.orangehrm.enums.LeftPaneMenuItemEnums;
 
 import static com.codeborne.selenide.Selenide.title;
 
@@ -17,7 +17,7 @@ public class HomePage {
     }
 
     public EmployeeInfoPage navigateToEmployeeInfoPage() {
-        getLeftPane().selectMenuItemFromLeftPane(LeftPaneMenuItems.PIM);
+        getLeftPane().selectMenuItemFromLeftPane(LeftPaneMenuItemEnums.PIM);
         return EmployeeInfoPage.getInstance();
     }
 

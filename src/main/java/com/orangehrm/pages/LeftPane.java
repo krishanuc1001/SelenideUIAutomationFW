@@ -1,14 +1,16 @@
 package com.orangehrm.pages;
 
-import static com.codeborne.selenide.Condition.visible;
+import com.orangehrm.enums.LeftPaneMenuItemEnums;
+
+import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LeftPane {
 
-    public void selectMenuItemFromLeftPane(String menuName) {
-        $(byText(menuName))
-                .shouldBe(visible)
+    public void selectMenuItemFromLeftPane(LeftPaneMenuItemEnums leftPaneMenuItems) {
+        $(byText(leftPaneMenuItems.getMenuName()))
+                .shouldBe(enabled)
                 .click();
     }
 
