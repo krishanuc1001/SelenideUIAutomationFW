@@ -1,6 +1,9 @@
 package com.orangehrm.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.google.common.util.concurrent.Uninterruptibles;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
@@ -28,9 +31,16 @@ public class EmployeeInfoPage {
         return this;
     }
 
-    public void isEmployeeAdded() {
-        SUCCESS_MESSAGE
-                .shouldHave(visible);
+    public boolean isEmployeeAdded() {
+        try {
+            SUCCESS_MESSAGE
+                    .shouldHave(visible);
+            Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(5));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
 }
