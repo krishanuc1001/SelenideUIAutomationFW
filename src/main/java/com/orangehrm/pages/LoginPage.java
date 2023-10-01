@@ -1,6 +1,7 @@
 package com.orangehrm.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.orangehrm.pojos.LoginDetails;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -21,13 +22,13 @@ public class LoginPage {
     private static final SelenideElement PASSWORD = $(byAttribute("placeholder", "Password"));
     private static final SelenideElement LOGIN_BTN = $(byAttribute("type", "submit"));
 
-    public HomePage userLogin() {
+    public HomePage userLogin(LoginDetails loginDetails) {
         USERNAME
                 .shouldBe(visible)
-                .setValue("Admin");
+                .setValue(loginDetails.getUsername());
         PASSWORD
                 .shouldBe(visible)
-                .setValue("admin123");
+                .setValue(loginDetails.getPassword());
         LOGIN_BTN
                 .shouldBe(enabled)
                 .click();
