@@ -27,7 +27,7 @@ public class EmployeeInfoPage {
         ADD_EMPLOYEE_BTN.shouldBe(visible).click();
         FIRST_NAME.shouldBe(visible).setValue(employee.getFirstName());
         LAST_NAME.shouldBe(visible).setValue(employee.getLastName());
-        UPLOAD_PHOTO.shouldBe(enabled).uploadFromClasspath("myimage.jpeg");
+        UPLOAD_PHOTO.shouldBe(enabled).uploadFromClasspath("images/myimage.jpeg");
         SAVE_BTN.shouldBe(enabled).click();
         return this;
     }
