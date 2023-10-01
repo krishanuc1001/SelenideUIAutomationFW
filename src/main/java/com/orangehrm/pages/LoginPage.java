@@ -1,6 +1,8 @@
 package com.orangehrm.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
@@ -8,6 +10,7 @@ import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class LoginPage {
 
     private static final SelenideElement USERNAME = $(byName("username"));

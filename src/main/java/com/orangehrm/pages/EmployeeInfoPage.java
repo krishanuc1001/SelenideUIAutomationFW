@@ -2,7 +2,9 @@ package com.orangehrm.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.google.common.util.concurrent.Uninterruptibles;
-import com.orangehrm.pojos.Employee;
+import com.orangehrm.pojos.EmployeeDetails;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.time.Duration;
 
@@ -14,6 +16,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class EmployeeInfoPage {
 
     private static final SelenideElement ADD_EMPLOYEE_BTN = $(byTagAndText("a", "Add Employee"));
@@ -23,7 +26,7 @@ public class EmployeeInfoPage {
     private static final SelenideElement SAVE_BTN = $(byText("Save"));
     private static final SelenideElement SUCCESS_MESSAGE = $(byText("Success"));
 
-    public EmployeeInfoPage addNewEmployee(Employee employee) {
+    public EmployeeInfoPage addNewEmployee(EmployeeDetails employee) {
         ADD_EMPLOYEE_BTN.shouldBe(visible).click();
         FIRST_NAME.shouldBe(visible).setValue(employee.getFirstName());
         LAST_NAME.shouldBe(visible).setValue(employee.getLastName());
