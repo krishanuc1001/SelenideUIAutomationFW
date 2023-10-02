@@ -26,6 +26,7 @@ out/
 bin/
 output/
 target/
+.allure
 
 # Extent report
 #ExtentReports-output
