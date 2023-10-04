@@ -28,18 +28,4 @@ public class TestSetup {
         open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 
-    @AfterAll
-    static void tearDownAllureReports() throws IOException {
-        if (Files.exists(Path.of("target/allure-results"))) {
-            try {
-                ProcessBuilder builder = new ProcessBuilder("mvn", "allure:serve");
-                builder.inheritIO();
-                Process process = builder.start();
-                process.waitFor();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
 }
