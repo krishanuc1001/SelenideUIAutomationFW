@@ -133,6 +133,15 @@
                 <configuration>
                     <reportVersion>${allure.version}</reportVersion>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>allure-serve</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>serve</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
